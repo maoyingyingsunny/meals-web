@@ -1,6 +1,6 @@
 <template>
   <div class="bg-grey-100 h-full">
-
+    <Navbar/>
     <main>
       <router-view/>
     </main>
@@ -8,6 +8,7 @@
 </template>
 
 <script setup>
+import Navbar from "./Navbar.vue";
 </script>
 
 <style scoped>

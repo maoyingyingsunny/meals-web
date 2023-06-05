@@ -1,20 +1,40 @@
 // 导入 vue-router 模块中的 `createRouter` 和 `createWebHistory` 函数
 import {createRouter, createWebHistory} from 'vue-router'
 import Home from '../views/Home.vue'
-import MealList from "../views/MealList.vue";
+import MealsByLetter from "../views/MealsByLetter.vue";
+import MealsByName from "../views/MealsByName.vue";
+import MealsByIngredient from "../views/MealsByIngredient.vue";
+import DefaultLayout from "../components/DefaultLayout.vue";
 
 // 定义了一个路由配置数组 routes
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    component: DefaultLayout,
+    children: [
+      {
+        path: '/',
+        name: 'Home',
+        component: Home,
+      },
+      {
+        path: '/by-name/:name?',
+        name: 'byName',
+        component: MealsByName,
+      },
+      {
+        path: '/by-letter/:letter?',
+        name: 'byLetter',
+        component: MealsByLetter,
+      },
+      {
+        path: '/by-ingredients/:ingredient?',
+        name: 'byIngredient',
+        component: MealsByIngredient,
+      },
+    ]
   },
-  {
-    path: '/letter/:letter',
-    name: 'byLetter',
-    component: MealList,
-  },
+
 ];
 
 // 用于创建路由实例和路由模式，并赋值给 router 变量
