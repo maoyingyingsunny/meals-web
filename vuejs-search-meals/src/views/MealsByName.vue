@@ -27,15 +27,12 @@
       <div class="p-3">
         <h3 class="font-semibold">{{ meal.strMeal }}</h3>
         <p class="mb-4">
-          {{ meal.strInstructions }}
+          Lascia che l'invitante aroma dei piatti preparati con cura ti avvolga e goditi il fascino unico che il cibo
+          porta con sé.
         </p>
         <div class="flex items-center justify-between">
-          <a :href="meal.strYoutube" target="_blank"
-             class="px-3 py-2 rounded border-2 text-white border-red-600 bg-red-500 hover:bg-red-600 hover:text=white transition"
-          >Youtube</a>
-          <a :href="meal.strSource" target="_blank"
-             class="px-3 py-2 rounded border-2 text-white border-purple-600 bg-purple-500 hover:bg-purple-600 hover:text=white transition"
-          >Detail</a>
+          <YouTubeButton :href="meal.strYoutube" target="_blank"> YouTube</YouTubeButton>
+          <SourceButton :href="meal.strSource" target="_blank"> Source</SourceButton>
         </div>
       </div>
     </div>
@@ -46,6 +43,8 @@
 import {computed, onMounted, ref} from "vue";
 import store from "../store";
 import {useRoute} from "vue-router";
+import YouTubeButton from "../components/YouTubeButton.vue";
+import SourceButton from "../components/SourceButton.vue";
 
 const keyword = ref('');
 const meals = computed(() => store.state.searchedMeals);
