@@ -1,5 +1,5 @@
 <template>
-  <div class="p-8">
+  <div class="p-8 pb-0">
     <!-- 搜索框 -->
     <input type="text"
            v-model="keyword"
@@ -11,12 +11,19 @@
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8"
   >
-    <div v-for="meal of meals" :key="meal.idMeal" class="bg-white shadow rounded-2xl">
-      <img
-        :src="meal.strMealThumb"
-        :alt="strMeal"
-        class="rounded-t-xl w-full h-48 object-cover"
-      />
+    <div
+      v-for="meal of meals"
+      :key="meal.idMeal"
+      class="bg-white shadow rounded-2xl"
+    >
+      <router-link :to="{name:'mealDetails', params:{id:meal.idMeal}}">
+        <img
+          :src="meal.strMealThumb"
+          :alt="strMeal"
+          class="rounded-t-xl w-full h-48 object-cover"
+        />
+      </router-link>
+
       <div class="p-3">
         <h3 class="font-semibold">{{ meal.strMeal }}</h3>
         <p class="mb-4">
@@ -36,14 +43,23 @@
 </template>
 
 <script setup>
-import {computed, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 import store from "../store";
+import {useRoute} from "vue-router";
 
 const keyword = ref('');
 const meals = computed(() => store.state.searchedMeals);
+const route = useRoute();
 
 function searchMeals() {
   store.dispatch('searchMeals', keyword.value)
 }
+
+onMounted(() => {
+  keyword.value = route.params.name
+  if (keyword.value) {
+    searchMeals()
+  }
+})
 
 </script>

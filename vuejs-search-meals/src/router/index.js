@@ -6,6 +6,7 @@ import MealsByName from "../views/MealsByName.vue";
 import MealsByIngredient from "../views/MealsByIngredient.vue";
 import DefaultLayout from "../components/DefaultLayout.vue";
 import GuestLayout from "../components/GuestLayout.vue";
+import MealDetails from "../views/MealDetails.vue";
 
 // 定义了一个路由配置数组 routes
 const routes = [
@@ -33,6 +34,11 @@ const routes = [
         name: 'byIngredient',
         component: MealsByIngredient,
       },
+      {
+        path: '/meal/:id',
+        name: 'mealDetails',
+        component: MealDetails,
+      }
     ]
   },
   {
