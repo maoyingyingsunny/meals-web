@@ -1,4 +1,4 @@
-<template>
+ <template>
   <!-- 按字母排序并跳转到对应路由 -->
   <div class="flex justify-center gap-2 mt-2">
     <router-link :to="{name:'byLetter',params:{letter}}"
@@ -26,6 +26,7 @@ onMounted(() => {
   store.dispatch('searchMealsByLetter', route.params.letter)
 })
 
+// 监听route变化，从而重新获取数据
 watch(route, () => {
   store.dispatch('searchMealsByLetter', route.params.letter)
 })
