@@ -4,7 +4,7 @@
 
 <script setup>
 import Meals from "../components/Meals.vue";
-import {computed, onMounted, ref} from "vue";
+import {computed, onMounted} from "vue";
 import store from "../store/index.js";
 import {useRoute} from "vue-router";
 
