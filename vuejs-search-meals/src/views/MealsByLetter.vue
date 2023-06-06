@@ -1,4 +1,4 @@
- <template>
+<template>
   <!-- 按字母排序并跳转到对应路由 -->
   <div class="flex justify-center gap-2 mt-2">
     <router-link :to="{name:'byLetter',params:{letter}}"
@@ -6,16 +6,14 @@
       {{ letter }}
     </router-link>
   </div>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
-    <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal"/>
-  </div>
+  <!-- 展示搜索结果 -->
+  <Meals :meals="meals"/>
 </template>
 
 <script setup>
 import {computed, onMounted, watch} from "vue";
 import store from "../store";
-import MealItem from "../components/MealItem.vue";
+import Meals from "../components/Meals.vue";
 import {useRoute} from "vue-router";
 
 const route = useRoute();
