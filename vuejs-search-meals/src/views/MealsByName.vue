@@ -8,17 +8,15 @@
            @change="searchMeals"
     />
   </div>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
-    <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal"/>
-  </div>
+  <!-- 展示搜索结果 -->
+  <Meals :meals="meals" />
 </template>
 
 <script setup>
 import {computed, onMounted, ref} from "vue";
 import store from "../store";
 import {useRoute} from "vue-router";
-import MealItem from "../components/MealItem.vue";
+import Meals from "../components/Meals.vue";
 
 const keyword = ref('');
 const meals = computed(() => store.state.searchedMeals);
