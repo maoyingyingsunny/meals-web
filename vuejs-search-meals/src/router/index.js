@@ -7,6 +7,7 @@ import MealsByIngredient from "../views/MealsByIngredient.vue";
 import DefaultLayout from "../components/DefaultLayout.vue";
 import GuestLayout from "../components/GuestLayout.vue";
 import MealDetails from "../views/MealDetails.vue";
+import Ingredients from "../views/Ingredients.vue";
 
 // 定义了一个路由配置数组 routes
 const routes = [
@@ -28,6 +29,11 @@ const routes = [
         path: '/by-letter/:letter?',
         name: 'byLetter',
         component: MealsByLetter,
+      },
+      {
+        path: '/ingredients',
+        name: 'ingredients',
+        component: Ingredients,
       },
       {
         path: '/by-ingredients/:ingredient?',
