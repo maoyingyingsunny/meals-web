@@ -13,7 +13,6 @@
 <script setup>
 import {computed, onMounted, watch} from "vue";
 import store from "../store";
-import MealItem from "../components/MealItem.vue";
 import Meals from "../components/Meals.vue";
 import {useRoute} from "vue-router";
 
